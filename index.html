@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maikol Zapata — Fullstack Developer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --ink: #111;
+        --paper: #f5f2ec;
+        --muted: #888;
+        --accent: #c8513a;
+        --border: rgba(0, 0, 0, 0.1);
+        --serif: "DM Serif Display", Georgia, serif;
+        --mono: "DM Mono", monospace;
+      }
+
+      html {
+        font-size: 16px;
+      }
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--mono);
+        font-weight: 300;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* --- NAV --- */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 2.5rem;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        background: var(--paper);
+        z-index: 10;
+      }
+      .logo {
+        font-family: var(--serif);
+        font-size: 1.15rem;
+        letter-spacing: -0.01em;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .nav-links a {
+        font-size: 0.75rem;
+        text-decoration: none;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+
+      /* --- LANGUAGE SWITCH (atomic component) --- */
+      .lang-switch {
+        position: relative;
+        display: inline-flex;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .lang-switch .lang-slider {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        background: var(--ink);
+        border-radius: 999px;
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+      }
+      .lang-switch[data-active="en"] .lang-slider {
+        transform: translateX(100%);
+      }
+      .lang-opt {
+        position: relative;
+        z-index: 1;
+        min-width: 2.6em;
+        padding: 0.32rem 0.55rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        transition: color 0.2s;
+      }
+      .lang-opt:hover {
+        color: var(--ink);
+      }
+      .lang-opt[aria-pressed="true"] {
+        color: var(--paper);
+      }
+
+      /* --- SECTIONS --- */
+      section {
+        padding: 4rem 2.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      /* --- HERO --- */
+      .hero {
+        padding: 5rem 2.5rem 4rem;
+      }
+      .hero-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .hero-label::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 1px;
+        background: var(--accent);
+      }
+      h1 {
+        font-family: var(--serif);
+        font-size: clamp(2.8rem, 6vw, 4.5rem);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        max-width: 680px;
+        margin-bottom: 1.75rem;
+      }
+      h1 em {
+        font-style: italic;
+        color: var(--muted);
+      }
+      .hero-desc {
+        font-size: 0.9rem;
+        color: var(--muted);
+        max-width: 420px;
+        line-height: 1.75;
+        margin-bottom: 2.5rem;
+      }
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.65rem 1.4rem;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .hero-cta:hover {
+        background: var(--accent);
+        transform: translateY(-1px);
+      }
+      .hero-cta-ghost {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--border);
+        margin-left: 0.75rem;
+      }
+      .hero-cta-ghost:hover {
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      /* --- STACK --- */
+      .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1px;
+        border: 1px solid var(--border);
+        background: var(--border);
+        margin-top: 2rem;
+      }
+      .stack-item {
+        background: var(--paper);
+        padding: 1rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .stack-item .tech {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .stack-item .level {
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .dot-row {
+        display: flex;
+        gap: 3px;
+        margin-top: 0.25rem;
+      }
+      .dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--border);
+      }
+      .dot.on {
+        background: var(--accent);
+      }
+
+      /* --- PROJECTS --- */
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 2rem;
+      }
+      h2 {
+        font-family: var(--serif);
+        font-size: 1.8rem;
+        letter-spacing: -0.01em;
+      }
+      .section-count {
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+      .projects {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+      }
+      .project {
+        background: var(--paper);
+        padding: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 1rem;
+        transition: background 0.2s;
+        cursor: default;
+      }
+      .project:hover {
+        background: #eee9df;
+      }
+      .project-num {
+        font-size: 0.65rem;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        margin-bottom: 0.4rem;
+        font-weight: 500;
+      }
+      .project-name {
+        font-family: var(--serif);
+        font-size: 1.15rem;
+        margin-bottom: 0.35rem;
+      }
+      .project-desc {
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.65;
+        max-width: 480px;
+      }
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.75rem;
+      }
+      .tag {
+        font-size: 0.65rem;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.55rem;
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
+      .project-link {
+        font-size: 0.7rem;
+        text-decoration: none;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        align-self: flex-start;
+        padding: 0.3rem 0.7rem;
+        border: 1px solid var(--border);
+        transition: all 0.15s;
+        white-space: nowrap;
+      }
+      .project-link:hover {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+
+      /* --- ABOUT --- */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+      .about-text p {
+        font-size: 0.9rem;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+      .about-text p strong {
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .timeline {
+        list-style: none;
+      }
+      .timeline li {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        gap: 1rem;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.82rem;
+      }
+      .timeline li:last-child {
+        border-bottom: none;
+      }
+      .tl-year {
+        color: var(--muted);
+        font-size: 0.72rem;
+        padding-top: 0.05rem;
+      }
+      .tl-place {
+        font-weight: 500;
+        margin-bottom: 0.15rem;
+      }
+      .tl-role {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      /* --- CONTACT --- */
+      .contact-inner {
+        max-width: 540px;
+      }
+      .contact-inner h2 {
+        font-size: 2.2rem;
+        margin-bottom: 0.75rem;
+      }
+      .contact-inner p {
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.75;
+        margin-bottom: 2rem;
+      }
+      .contact-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .contact-link {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--ink);
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 2px;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .contact-link:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        padding: 1.5rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.7rem;
+        color: var(--muted);
+        letter-spacing: 0.04em;
+      }
+
+      /* --- ANIMATIONS --- */
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hero-label {
+        animation: fade-up 0.5s ease both;
+      }
+      h1 {
+        animation: fade-up 0.55s 0.1s ease both;
+      }
+      .hero-desc {
+        animation: fade-up 0.55s 0.2s ease both;
+      }
+      .hero-btns {
+        animation: fade-up 0.55s 0.3s ease both;
+      }
+
+      /* --- RESPONSIVE --- */
+      @media (max-width: 640px) {
+        nav {
+          padding: 1rem 1.25rem;
+        }
+        .nav-links {
+          gap: 1rem;
+        }
+        section,
+        .hero {
+          padding: 3rem 1.25rem;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        footer {
+          padding: 1rem 1.25rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <span class="logo">Maikol Zapata</span>
+      <div class="nav-links">
+        <a href="#stack" data-i18n="navStack">Stack</a>
+        <a href="#projects" data-i18n="navProjects">Proyectos</a>
+        <a href="#about" data-i18n="navAbout">Sobre mí</a>
+        <a href="#contact" data-i18n="navContact">Contacto</a>
+        <div class="lang-switch" data-active="es" role="group" aria-label="Language / Idioma">
+          <span class="lang-slider" aria-hidden="true"></span>
+          <button type="button" class="lang-opt" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <p class="hero-label" data-i18n="heroLabel">Fullstack Developer</p>
+      <h1 data-i18n-html="heroTitle">Construyo productos<br />que <em>simplemente</em><br />funcionan.</h1>
+      <p class="hero-desc" data-i18n="heroDesc">
+        Cinco años diseñando y desarrollando sistemas desde la base de datos
+        hasta el pixel. Enfocado en código limpio, rendimiento y experiencias
+        que no requieren manual.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="hero-cta" data-i18n="heroCtaPrimary">Ver proyectos →</a>
+        <a href="#contact" class="hero-cta hero-cta-ghost" data-i18n="heroCtaGhost">Conversemos</a>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack">
+      <div class="section-header">
+        <h2 data-i18n="navStack">Stack</h2>
+        <span class="section-count" data-i18n="stackCount">14 tecnologías</span>
+      </div>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <span class="tech">React</span><span class="level" data-i18n="lvlExpert">Experto</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">Node.js</span><span class="level" data-i18n="lvlExpert">Experto</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">TypeScript</span
+          ><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">CSS</span><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">HTML</span><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">PostgreSQL</span
+          ><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">Next.js</span><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">Docker</span><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">GraphQL</span><span class="level" data-i18n="lvlIntermediate">Intermedio</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">Redis</span><span class="level" data-i18n="lvlIntermediate">Intermedio</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">AWS</span><span class="level" data-i18n="lvlIntermediate">Intermedio</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="tech">Python</span><span class="level" data-i18n="lvlBasic">Básico</span>
+          <div class="dot-row">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 data-i18n="navProjects">Proyectos</h2>
+        <span class="section-count" data-i18n="projectsCount">Selección — 2024</span>
+      </div>
+      <div class="projects">
+        <div class="project">
+          <div>
+            <p class="project-num">01</p>
+            <p class="project-name">Fast CV</p>
+            <p class="project-desc" data-i18n="proj1Desc">
+              Constructor de currículums que genera un CV en minutos, en formato
+              ATS o con plantillas de diseño, y lo exporta a PDF o DOCX. Gratis y
+              sin fricción.
+            </p>
+            <div class="project-tags">
+              <span class="tag">React</span><span class="tag">PDF</span
+              ><span class="tag">DOCX</span><span class="tag">ATS</span>
+            </div>
+          </div>
+          <a class="project-link" href="https://fast-cv.netlify.app/" target="_blank" rel="noopener" data-i18n="projView">Ver →</a>
+        </div>
+        <div class="project">
+          <div>
+            <p class="project-num">02</p>
+            <p class="project-name">Focus Poker</p>
+            <p class="project-desc" data-i18n="proj2Desc">
+              Planning poker en tiempo real para ceremonias de estimación ágil.
+              Nació de una necesidad del propio equipo para estimar historias de
+              forma colaborativa y sin distracciones.
+            </p>
+            <div class="project-tags">
+              <span class="tag">React</span><span class="tag">WebSockets</span
+              ><span class="tag">Realtime</span><span class="tag">Scrum</span>
+            </div>
+          </div>
+          <a class="project-link" href="https://focuspoker.netlify.app/" target="_blank" rel="noopener" data-i18n="projView">Ver →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header"><h2 data-i18n="navAbout">Sobre mí</h2></div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p data-i18n-html="aboutP1">
+            Soy desarrollador fullstack de
+            <strong>Santiago, Chile</strong>. Mis raíces están en el desarrollo
+            de interfaces. Eso me dio una forma particular de leer los diseños —
+            estructurarlos mentalmente antes de traducirlos a código
+          </p>
+          <p data-i18n-html="aboutP2">
+            Me importa construir cosas robustas que
+            <strong>que otras personas quieran usar</strong>, no solo que
+            funcionen el día del demo. Si algo se puede automatizar o
+            simplificar, lo hago.
+          </p>
+          <p data-i18n="aboutP3">
+            Fuera del código: muchos viajes, mucho deporte, vida sana y fanático
+            del buen café.
+          </p>
+        </div>
+        <ul class="timeline">
+          <li>
+            <span class="tl-year">2024</span>
+            <div>
+              <div class="tl-place" data-i18n="tl1Place">Freelance independiente</div>
+              <div class="tl-role" data-i18n="tl1Role">Fullstack Developer</div>
+            </div>
+          </li>
+          <li>
+            <span class="tl-year">2022</span>
+            <div>
+              <div class="tl-place" data-i18n="tl2Place">Startup Fintual</div>
+              <div class="tl-role" data-i18n="tl2Role">Backend Engineer</div>
+            </div>
+          </li>
+          <li>
+            <span class="tl-year">2020</span>
+            <div>
+              <div class="tl-place" data-i18n="tl3Place">Agencia Polar</div>
+              <div class="tl-role" data-i18n="tl3Role">Frontend Developer</div>
+            </div>
+          </li>
+          <li>
+            <span class="tl-year">2019</span>
+            <div>
+              <div class="tl-place" data-i18n="tl4Place">Universidad Diego Portales</div>
+              <div class="tl-role" data-i18n="tl4Role">Ing. en Informática</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="contact-inner">
+        <h2 data-i18n-html="contactTitle">Trabajemos<br /><em>juntos.</em></h2>
+        <p data-i18n="contactDesc">
+          Disponible para proyectos freelance, colaboraciones y posiciones
+          remotas. Respondo en menos de 24 horas.
+        </p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:zmaikol399@gmail.com"
+            >zmaikol399@gmail.com</a
+          >
+          <a class="contact-link" href="#">GitHub</a>
+          <a class="contact-link" href="#">LinkedIn</a>
+          <a class="contact-link" href="#" data-i18n="contactResume">Curriculum →</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2024 Maikol Zapata</span>
+      <span>Santiago, Chile</span>
+    </footer>
+
+    <script>
+      (function () {
+        // ── Translation dictionary ─────────────────────────────
+        // Spanish is also the markup default; English mirrors every key.
+        var i18n = {
+          es: {
+            navStack: "Stack",
+            navProjects: "Proyectos",
+            navAbout: "Sobre mí",
+            navContact: "Contacto",
+            heroLabel: "Fullstack Developer",
+            heroTitle:
+              "Construyo productos<br />que <em>simplemente</em><br />funcionan.",
+            heroDesc:
+              "Cinco años diseñando y desarrollando sistemas desde la base de datos hasta el pixel. Enfocado en código limpio, rendimiento y experiencias que no requieren manual.",
+            heroCtaPrimary: "Ver proyectos →",
+            heroCtaGhost: "Conversemos",
+            stackCount: "14 tecnologías",
+            lvlExpert: "Experto",
+            lvlAdvanced: "Avanzado",
+            lvlIntermediate: "Intermedio",
+            lvlBasic: "Básico",
+            projectsCount: "Selección — 2024",
+            proj1Desc:
+              "Constructor de currículums que genera un CV en minutos, en formato ATS o con plantillas de diseño, y lo exporta a PDF o DOCX. Gratis y sin fricción.",
+            proj2Desc:
+              "Planning poker en tiempo real para ceremonias de estimación ágil. Nació de una necesidad del propio equipo para estimar historias de forma colaborativa y sin distracciones.",
+            projView: "Ver →",
+            aboutP1:
+              "Soy desarrollador fullstack de <strong>Santiago, Chile</strong>. Mis raíces están en el desarrollo de interfaces. Eso me dio una forma particular de leer los diseños — estructurarlos mentalmente antes de traducirlos a código.",
+            aboutP2:
+              "Me importa construir cosas robustas <strong>que otras personas quieran usar</strong>, no solo que funcionen el día del demo. Si algo se puede automatizar o simplificar, lo hago.",
+            aboutP3:
+              "Fuera del código: muchos viajes, mucho deporte, vida sana y fanático del buen café.",
+            tl1Place: "Freelance independiente",
+            tl1Role: "Fullstack Developer",
+            tl2Place: "Startup Fintual",
+            tl2Role: "Backend Engineer",
+            tl3Place: "Agencia Polar",
+            tl3Role: "Frontend Developer",
+            tl4Place: "Universidad Diego Portales",
+            tl4Role: "Ing. en Informática",
+            contactTitle: "Trabajemos<br /><em>juntos.</em>",
+            contactDesc:
+              "Disponible para proyectos freelance, colaboraciones y posiciones remotas. Respondo en menos de 24 horas.",
+            contactResume: "Curriculum →"
+          },
+          en: {
+            navStack: "Stack",
+            navProjects: "Projects",
+            navAbout: "About",
+            navContact: "Contact",
+            heroLabel: "Fullstack Developer",
+            heroTitle:
+              "I build products<br />that <em>just</em><br />work.",
+            heroDesc:
+              "Five years designing and building systems from the database to the pixel. Focused on clean code, performance, and experiences that need no manual.",
+            heroCtaPrimary: "View projects →",
+            heroCtaGhost: "Let's talk",
+            stackCount: "14 technologies",
+            lvlExpert: "Expert",
+            lvlAdvanced: "Advanced",
+            lvlIntermediate: "Intermediate",
+            lvlBasic: "Basic",
+            projectsCount: "Selected — 2024",
+            proj1Desc:
+              "Resume builder that generates a CV in minutes — ATS format or styled templates — and exports it to PDF or DOCX. Free and friction-free.",
+            proj2Desc:
+              "Real-time planning poker for agile estimation ceremonies. Born from the team's own need to estimate stories collaboratively and without distractions.",
+            projView: "View →",
+            aboutP1:
+              "I'm a fullstack developer from <strong>Santiago, Chile</strong>. My roots are in interface development. That gave me a particular way of reading designs — structuring them mentally before translating them into code.",
+            aboutP2:
+              "I care about building robust things <strong>that other people want to use</strong>, not just things that work on demo day. If something can be automated or simplified, I do it.",
+            aboutP3:
+              "Outside of code: lots of travel, lots of sport, healthy living, and a good-coffee fanatic.",
+            tl1Place: "Independent freelance",
+            tl1Role: "Fullstack Developer",
+            tl2Place: "Fintual Startup",
+            tl2Role: "Backend Engineer",
+            tl3Place: "Polar Agency",
+            tl3Role: "Frontend Developer",
+            tl4Place: "Diego Portales University",
+            tl4Role: "Computer Engineering",
+            contactTitle: "Let's work<br /><em>together.</em>",
+            contactDesc:
+              "Available for freelance projects, collaborations, and remote positions. I reply in under 24 hours.",
+            contactResume: "Resume →"
+          }
+        };
+
+        // ── Region detection (no libraries, no network) ────────
+        // US timezones → English. Other America/* zones (Latin
+        // America) → Spanish. Otherwise fall back to the browser
+        // language, defaulting to Spanish.
+        var US_ZONES = {
+          "America/New_York": 1,
+          "America/Detroit": 1,
+          "America/Kentucky/Louisville": 1,
+          "America/Kentucky/Monticello": 1,
+          "America/Indiana/Indianapolis": 1,
+          "America/Chicago": 1,
+          "America/Menominee": 1,
+          "America/Denver": 1,
+          "America/Boise": 1,
+          "America/Phoenix": 1,
+          "America/Los_Angeles": 1,
+          "America/Anchorage": 1,
+          "America/Adak": 1,
+          "America/Juneau": 1,
+          "America/Sitka": 1,
+          "America/Nome": 1,
+          "Pacific/Honolulu": 1
+        };
+
+        function detectLang() {
+          var tz = "";
+          try {
+            tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+          } catch (e) {}
+          if (US_ZONES[tz]) return "en";
+          if (tz.indexOf("America/") === 0) return "es"; // Latin America
+          var nav = (navigator.language || "es").toLowerCase();
+          return nav.indexOf("en") === 0 ? "en" : "es";
+        }
+
+        // ── Apply a language across the page ────────────────────
+        var sw = document.querySelector(".lang-switch");
+        var opts = sw ? sw.querySelectorAll(".lang-opt") : [];
+
+        function applyLang(lang) {
+          var dict = i18n[lang] || i18n.es;
+          document.documentElement.lang = lang;
+
+          document.querySelectorAll("[data-i18n]").forEach(function (el) {
+            var v = dict[el.getAttribute("data-i18n")];
+            if (v != null) el.textContent = v;
+          });
+          document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+            var v = dict[el.getAttribute("data-i18n-html")];
+            if (v != null) el.innerHTML = v;
+          });
+
+          if (sw) sw.setAttribute("data-active", lang);
+          opts.forEach(function (o) {
+            o.setAttribute(
+              "aria-pressed",
+              o.getAttribute("data-lang") === lang ? "true" : "false"
+            );
+          });
+        }
+
+        // ── Init: saved choice wins, else auto-detect ──────────
+        var saved = null;
+        try {
+          saved = localStorage.getItem("lang");
+        } catch (e) {}
+        applyLang(saved || detectLang());
+
+        // ── Manual selection persists and overrides detection ──
+        opts.forEach(function (o) {
+          o.addEventListener("click", function () {
+            var lang = o.getAttribute("data-lang");
+            applyLang(lang);
+            try {
+              localStorage.setItem("lang", lang);
+            } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
