@@ -32,6 +32,7 @@
       viewDemo: "Live demo ↗",
       viewCode: "Code ↗",
       playNow: "Play ↗",
+      playBadge: "Play",
       stackEyebrow: "02 — Tools",
       stackFrontNote: "Used in Fast CV, Focus Poker, and OTIC",
       stackBackTitle: "Backend & data",
