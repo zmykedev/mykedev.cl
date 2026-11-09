@@ -31,7 +31,7 @@
         "My portfolio as a 3D game: drive around a tiny planet where every place tells part of my stack, projects, and experience.",
       viewDemo: "Live demo ↗",
       viewCode: "Code ↗",
-      comingSoon: "Coming soon",
+      playNow: "Play ↗",
       stackEyebrow: "02 — Tools",
       stackFrontNote: "Used in Fast CV, Focus Poker, and OTIC",
       stackBackTitle: "Backend & data",
