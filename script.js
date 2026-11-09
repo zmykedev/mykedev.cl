@@ -5,46 +5,57 @@
   // dictionary only holds the English overrides for each key.
   var i18n = {
     en: {
-      navStack: "Stack",
+      brandRole: "/ fullstack product engineer",
       navProjects: "Projects",
+      navStack: "Stack",
       navAbout: "About",
       navContact: "Contact",
-      heroTitle:
-        "I build products<br />that <em>just</em><br />work.",
+      heroStatus: "Available for freelance & remote · Santiago, Chile",
+      heroTitle: "I build products that <em>just</em> work.",
       heroDesc:
-        "Five years designing and building systems from the database to the pixel. Focused on clean code, performance, and authentic experiences.",
-      heroCtaPrimary: "View projects →",
+        "Fullstack developer with over five years taking products from idea to production, from the database to the pixel. Clean code, performance, and experiences people actually want to use.",
+      heroCtaPrimary: "View projects",
       heroCtaGhost: "Let's talk",
-      stackCount: "14 technologies",
-      lvlExpert: "Expert",
-      lvlAdvanced: "Advanced",
-      lvlIntermediate: "Intermediate",
-      lvlBasic: "Basic",
-      projectsCount: "Selected — 2024",
+      cvPdf: "Resume (PDF)",
+      sceneHint: "from idea to production",
+      projEyebrow: "01 — Selected work",
+      projNote: "Products in production, with the problem they solve and the decisions behind them.",
+      proj1Kicker: "01 · Own product · 2024",
       proj1Desc:
         "Resume builder that generates a CV in minutes — ATS format or styled templates — and exports it to PDF or DOCX. Free and friction-free.",
+      proj2Kicker: "02 · Team tool",
       proj2Desc:
-        "Real-time planning poker for agile estimation ceremonies. Born from the team's own need to estimate stories collaboratively and without distractions.",
-      projView: "View →",
+        "Real-time planning poker to estimate stories without distractions. Born from my own team's need.",
+      proj3Kicker: "03 · Interactive experiment",
+      proj3Desc:
+        "My portfolio as a 3D game: drive around a tiny planet where every place tells part of my stack, projects, and experience.",
+      viewDemo: "Live demo ↗",
+      viewCode: "Code ↗",
+      comingSoon: "Coming soon",
+      stackEyebrow: "02 — Tools",
+      stackFrontNote: "Used in Fast CV, Focus Poker, and OTIC",
+      stackBackTitle: "Backend & data",
+      stackBackNote: "APIs, data models, and real time",
+      stackInfraTitle: "Infra & 3D",
+      stackInfraNote: "Containers, deployment, and WebGL experiences",
+      aboutEyebrow: "03 — About",
+      aboutTitle: "From mechanical engineering to software.",
       aboutP1:
-        "I'm a fullstack developer in <strong>Santiago, Chile</strong>, with over five years taking products from idea to production. I started out building interfaces, so I read designs in a particular way: I structure them in my head before translating them into clean, maintainable code.",
+        "I studied Mechanical, Automotive & Electronic Systems Engineering and ended up building web products. I started with interfaces, so I read designs in a particular way: I structure them in my head before translating them into clean, maintainable code.",
       aboutP2:
-        "I build robust things <strong>that people actually want to use</strong>: fast, clear, and easy to understand. I don't just write code; I sweat every detail and every flow, and I test the product thinking like the customer who'll use it.",
-      aboutP3:
-        "Outside of code: lots of travel, lots of sport, and a good-coffee fanatic.",
-      aboutExpTitle: "Experience",
-      aboutEduTitle: "Education",
-      aboutCertTitle: "Certifications",
-      exp1Date: "2023 — Present",
+        "I test every flow thinking like the customer who'll use it. Outside of code: travel, sport, and good coffee.",
+      aboutExpTitle: "EXPERIENCE",
+      exp1Date: "2023 — now",
       exp1Role: "Full Stack Developer",
       exp2Role: "Frontend Developer",
-      exp3Role: "Freelance Developer",
-      edu1Field:
-        "Mechanical, Automotive & Electronic Systems Engineering",
-      contactTitle: "Let's work<br /><em>together.</em>",
+      exp3Role: "Freelance Developer <em>(in parallel)</em>",
+      eduToggle: "Education & certifications →",
+      edu1Field: "Mechanical, Automotive & Electronic Systems Engineering",
+      cert5: "Full-Stack Python Developer",
+      contactTitle: "Let's work <em>together.</em>",
       contactDesc:
         "Available for freelance projects, collaborations, and remote positions. I reply in under 24 hours.",
-      contactResume: "Resume →"
+      contactResume: "Download resume"
     }
   };
 
