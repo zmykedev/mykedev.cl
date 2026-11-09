@@ -1,360 +1,292 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MykeDev — Fullstack Product Engineer</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maikol Zapata · Fullstack Product Engineer — mykedev.cl</title>
+    <meta
+      name="description"
+      content="Maikol Zapata, fullstack product engineer en Santiago, Chile. Productos de la idea a producción, desde la base de datos hasta el pixel."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <nav>
-      <a class="nav-brand" href="#hero" aria-label="Volver al inicio">
-        <span class="logo">MYKEDEV.CL</span>
-        <span class="nav-role">Full Stack Product Engineer</span>
-      </a>
-      <div class="nav-links">
-        <a href="#stack" data-i18n="navStack">Stack</a>
-        <a href="#projects" data-i18n="navProjects">Proyectos</a>
-        <a href="#about" data-i18n="navAbout">Sobre mí</a>
-        <a href="#contact" data-i18n="navContact">Contacto</a>
-        <div class="lang-switch" data-active="es" role="group" aria-label="Language / Idioma">
-          <span class="lang-slider" aria-hidden="true"></span>
-          <button type="button" class="lang-opt" data-lang="es" aria-pressed="true">ES</button>
-          <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href="#inicio" class="brand">
+          <span class="brand-name">mykedev<span class="accent">.</span>cl</span>
+          <span class="brand-role mono" data-i18n="brandRole">/ fullstack product engineer</span>
+        </a>
+        <nav class="main-nav" aria-label="Principal">
+          <a href="#proyectos" data-i18n="navProjects">Proyectos</a>
+          <a href="#stack" data-i18n="navStack">Stack</a>
+          <a href="#sobre-mi" data-i18n="navAbout">Sobre mí</a>
+          <a href="#contacto" data-i18n="navContact">Contacto</a>
+        </nav>
+        <div class="lang-switch" role="group" aria-label="Idioma" data-active="es">
+          <button type="button" class="lang-opt mono" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" class="lang-opt mono" data-lang="en" aria-pressed="false">EN</button>
         </div>
       </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="inicio" class="wrap hero">
+        <div class="hero-text">
+          <div class="status-pill">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span data-i18n="heroStatus">Disponible para freelance y remoto · Santiago, Chile</span>
+          </div>
+          <h1 data-i18n-html="heroTitle">
+            Construyo productos que <em>simplemente</em> funcionan.
+          </h1>
+          <p class="lead" data-i18n="heroDesc">
+            Fullstack con más de cinco años llevando productos de la idea a
+            producción, desde la base de datos hasta el pixel. Código limpio,
+            rendimiento y experiencias que la gente realmente quiere usar.
+          </p>
+          <div class="hero-actions">
+            <a href="#proyectos" class="btn btn-solid">
+              <span data-i18n="heroCtaPrimary">Ver proyectos</span>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+            </a>
+            <a href="#contacto" class="btn btn-outline" data-i18n="heroCtaGhost">Conversemos</a>
+            <span class="divider-v" aria-hidden="true"></span>
+            <div class="hero-links">
+              <a href="https://github.com/zmykedev" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://www.linkedin.com/in/maikolzapata" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="CV_Maikol_Zapata_FullStack.pdf" target="_blank" rel="noopener" data-i18n="cvPdf">CV (PDF)</a>
+            </div>
+          </div>
+        </div>
+
+        <figure class="hero-scene grid-bg" aria-hidden="true">
+          <span class="scene-label mono">hero.scene</span>
+          <div class="cube-stage">
+            <div class="cube">
+              <span class="face f1"></span><span class="face f2"></span>
+              <span class="face f3"></span><span class="face f4"></span>
+              <span class="face f5"></span><span class="face f6"></span>
+              <span class="core"></span>
+            </div>
+          </div>
+          <div class="scene-foot mono">
+            <span>three.js · webgl · css3d</span>
+            <span data-i18n="sceneHint">de la idea a producción</span>
+          </div>
+        </figure>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="proyectos" class="band">
+        <div class="wrap section">
+          <div class="section-head split">
+            <div class="section-title">
+              <span class="eyebrow mono" data-i18n="projEyebrow">01 — Trabajo seleccionado</span>
+              <h2 data-i18n="navProjects">Proyectos</h2>
+            </div>
+            <p class="section-note" data-i18n="projNote">
+              Productos en producción, con el problema que resuelven y las decisiones detrás.
+            </p>
+          </div>
+
+          <article class="card feature">
+            <div class="browser">
+              <div class="browser-bar">
+                <span></span><span></span><span></span>
+                <span class="browser-url mono">fast-cv.netlify.app</span>
+              </div>
+              <a class="browser-body" href="https://fast-cv.netlify.app/" target="_blank" rel="noopener" aria-label="Abrir Fast CV">
+                <div class="mock-doc" aria-hidden="true">
+                  <span class="l w60 strong"></span><span class="l w40"></span>
+                  <span class="gap"></span>
+                  <span class="l w90"></span><span class="l w80"></span><span class="l w85"></span>
+                  <span class="gap"></span>
+                  <span class="l w30 strong"></span><span class="l w90"></span><span class="l w70"></span>
+                  <div class="mock-badges"><span>PDF</span><span>DOCX</span><span>ATS ✓</span></div>
+                </div>
+              </a>
+            </div>
+            <div class="feature-body">
+              <span class="eyebrow mono" data-i18n="proj1Kicker">01 · Producto propio · 2024</span>
+              <h3>Fast CV</h3>
+              <p data-i18n="proj1Desc">
+                Constructor de currículums que genera un CV en minutos, en formato
+                ATS o con plantillas de diseño, y lo exporta a PDF o DOCX. Gratis
+                y sin fricción.
+              </p>
+              <div class="tags">
+                <span class="tag mono">React</span><span class="tag mono">PDF</span>
+                <span class="tag mono">DOCX</span><span class="tag mono">ATS</span>
+              </div>
+              <div class="card-links">
+                <a href="https://fast-cv.netlify.app/" target="_blank" rel="noopener" data-i18n="viewDemo">Ver demo ↗</a>
+                <a href="https://github.com/zmykedev" target="_blank" rel="noopener" data-i18n="viewCode">Código ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <div class="cards-grid">
+            <article class="card">
+              <a class="shot" href="https://focuspoker.netlify.app/" target="_blank" rel="noopener" aria-label="Abrir Focus Poker">
+                <div class="mock-cards" aria-hidden="true">
+                  <span>3</span><span class="up">5</span><span>8</span>
+                </div>
+              </a>
+              <span class="eyebrow mono" data-i18n="proj2Kicker">02 · Herramienta de equipo</span>
+              <h3>Focus Poker</h3>
+              <p data-i18n="proj2Desc">
+                Planning poker en tiempo real para estimar historias sin
+                distracciones. Nació de una necesidad de mi propio equipo.
+              </p>
+              <div class="tags">
+                <span class="tag mono">React</span><span class="tag mono">WebSockets</span>
+                <span class="tag mono">Realtime</span><span class="tag mono">Scrum</span>
+              </div>
+              <div class="card-links">
+                <a href="https://focuspoker.netlify.app/" target="_blank" rel="noopener" data-i18n="viewDemo">Ver demo ↗</a>
+                <a href="https://github.com/zmykedev" target="_blank" rel="noopener" data-i18n="viewCode">Código ↗</a>
+              </div>
+            </article>
+
+            <article class="card dark">
+              <div class="shot grid-bg dashed" aria-hidden="true">
+                <div class="mini-planet-wrap"><div class="mini-planet"></div><span class="car"></span></div>
+              </div>
+              <span class="eyebrow mono soft" data-i18n="proj3Kicker">03 · Experimento interactivo</span>
+              <h3>MykeDev World</h3>
+              <p data-i18n="proj3Desc">
+                Mi portfolio como juego 3D: recorres un pequeño planeta en auto y
+                cada lugar cuenta una parte de mi stack, mis proyectos y mi
+                experiencia.
+              </p>
+              <div class="tags">
+                <span class="tag mono">Three.js</span><span class="tag mono">WebGL</span>
+                <span class="tag mono">GLSL</span>
+              </div>
+              <div class="card-links">
+                <span class="soon mono" data-i18n="comingSoon">Próximamente</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- STACK -->
+      <section id="stack" class="band">
+        <div class="wrap section">
+          <div class="section-title">
+            <span class="eyebrow mono" data-i18n="stackEyebrow">02 — Herramientas</span>
+            <h2>Stack</h2>
+          </div>
+          <div class="stack-grid">
+            <div class="stack-col">
+              <h3>Frontend</h3>
+              <p class="stack-list">React · Next.js · TypeScript · HTML · CSS</p>
+              <p class="stack-note" data-i18n="stackFrontNote">Usado en Fast CV, Focus Poker y OTIC</p>
+            </div>
+            <div class="stack-col">
+              <h3 data-i18n="stackBackTitle">Backend y datos</h3>
+              <p class="stack-list">Node.js · GraphQL · Python · PostgreSQL · Redis</p>
+              <p class="stack-note" data-i18n="stackBackNote">APIs, modelos de datos y tiempo real</p>
+            </div>
+            <div class="stack-col">
+              <h3 data-i18n="stackInfraTitle">Infra y 3D</h3>
+              <p class="stack-list">Docker · AWS · Three.js</p>
+              <p class="stack-note" data-i18n="stackInfraNote">Contenedores, despliegue y experiencias WebGL</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="sobre-mi" class="band">
+        <div class="wrap section about">
+          <div class="about-text">
+            <span class="eyebrow mono" data-i18n="aboutEyebrow">03 — Sobre mí</span>
+            <h2 class="h2-sm" data-i18n="aboutTitle">De la ingeniería en maquinaria al software.</h2>
+            <p data-i18n="aboutP1">
+              Estudié Ingeniería en Maquinaria, Vehículos y Sistemas Electrónicos
+              y terminé construyendo productos web. Empecé por las interfaces, así
+              que leo los diseños de forma particular: los estructuro mentalmente
+              antes de traducirlos a código limpio y mantenible.
+            </p>
+            <p data-i18n="aboutP2">
+              Pruebo cada flujo pensando como el cliente que lo va a usar. Fuera
+              del código: viajes, deporte y buen café.
+            </p>
+          </div>
+          <div class="about-side">
+            <span class="side-label mono" data-i18n="aboutExpTitle">EXPERIENCIA</span>
+            <ul class="timeline">
+              <li>
+                <span class="tl-date mono" data-i18n="exp1Date">2023 — hoy</span>
+                <div><strong data-i18n="exp1Role">Desarrollador Full Stack</strong><span>OTIC · Cámara Chilena de la Construcción</span></div>
+              </li>
+              <li>
+                <span class="tl-date mono">2022 — 2023</span>
+                <div><strong data-i18n="exp2Role">Desarrollador Frontend</strong><span>PROYECTE</span></div>
+              </li>
+              <li>
+                <span class="tl-date mono">2022 — 2023</span>
+                <div><strong data-i18n-html="exp3Role">Desarrollador Freelance <em>(en paralelo)</em></strong><span>XBrein</span></div>
+              </li>
+            </ul>
+
+            <details class="edu">
+              <summary data-i18n="eduToggle">Educación y certificaciones →</summary>
+              <ul class="timeline compact">
+                <li>
+                  <span class="tl-date mono">2017 — 2020</span>
+                  <div><strong>INACAP</strong><span data-i18n="edu1Field">Ingeniería en Maquinaria, Vehículos y Sistemas Electrónicos</span></div>
+                </li>
+                <li><span class="tl-date mono">2026</span><div><strong>Version Control</strong><span>Meta</span></div></li>
+                <li><span class="tl-date mono">2026</span><div><strong>Programming with JavaScript</strong><span>Meta</span></div></li>
+                <li><span class="tl-date mono">2025</span><div><strong>Introduction to Front-End Development</strong><span>Coursera</span></div></li>
+                <li><span class="tl-date mono">2021</span><div><strong>Web Fundamentals HTML, CSS, JS</strong><span>Coding Dojo</span></div></li>
+                <li><span class="tl-date mono">2021</span><div><strong data-i18n="cert5">Desarrollador Full-Stack Python</strong><span>Coding Dojo</span></div></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contacto" class="contact">
+        <div class="wrap contact-inner">
+          <h2 data-i18n-html="contactTitle">Trabajemos <em>juntos.</em></h2>
+          <p data-i18n="contactDesc">
+            Disponible para proyectos freelance, colaboraciones y posiciones
+            remotas. Respondo en menos de 24 horas.
+          </p>
+          <div class="contact-links">
+            <a class="btn btn-light" href="mailto:zmaikol399@gmail.com">zmaikol399@gmail.com</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/maikolzapata" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn btn-ghost" href="https://github.com/zmykedev" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="btn btn-ghost" href="CV_Maikol_Zapata_FullStack.pdf" target="_blank" rel="noopener" data-i18n="contactResume">Descargar CV</a>
+          </div>
+          <footer class="site-footer mono">
+            <span>© 2026 Maikol Zapata</span>
+            <span>Santiago, Chile</span>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile bottom nav -->
+    <nav class="mobile-nav" aria-label="Navegación móvil">
+      <a href="#proyectos" data-i18n="navProjects">Proyectos</a>
+      <a href="#stack" data-i18n="navStack">Stack</a>
+      <a href="#sobre-mi" data-i18n="navAbout">Sobre mí</a>
+      <a href="#contacto" data-i18n="navContact">Contacto</a>
     </nav>
-
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <h1 data-i18n-html="heroTitle">Construyo productos<br />que <em>simplemente</em><br />funcionan.</h1>
-      <p class="hero-desc" data-i18n="heroDesc">
-        Cinco años diseñando y desarrollando sistemas desde la base de datos
-        hasta el pixel. Enfocado en código limpio, rendimiento y experiencias
-        auténticas.
-      </p>
-      <div class="hero-btns">
-        <a href="#projects" class="hero-cta" data-i18n="heroCtaPrimary">Ver proyectos →</a>
-        <a href="#contact" class="hero-cta hero-cta-ghost" data-i18n="heroCtaGhost">Conversemos</a>
-      </div>
-      <div class="hero-social">
-        <a
-          href="https://github.com/zmykedev"
-          target="_blank"
-          rel="noopener"
-          class="hero-social-link"
-          data-icon="github"
-          aria-label="GitHub"
-        ></a>
-        <a
-          href="https://www.linkedin.com/in/maikolzapata"
-          target="_blank"
-          rel="noopener"
-          class="hero-social-link"
-          data-icon="linkedin"
-          aria-label="LinkedIn"
-        ></a>
-        <a
-          href="mailto:zmaikol399@gmail.com"
-          class="hero-social-link"
-          data-icon="gmail"
-          aria-label="Email"
-        ></a>
-      </div>
-    </section>
-
-    <!-- STACK -->
-    <section id="stack">
-      <div class="section-header">
-        <h2 data-i18n="navStack">Stack</h2>
-        <span class="section-count" data-i18n="stackCount">14 tecnologías</span>
-      </div>
-      <div class="stack-grid">
-        <div class="stack-item">
-          <span class="tech">React</span><span class="level" data-i18n="lvlExpert">Experto</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">Node.js</span><span class="level" data-i18n="lvlExpert">Experto</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">TypeScript</span
-          ><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">CSS</span><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">HTML</span><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">PostgreSQL</span
-          ><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">Next.js</span><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">Docker</span><span class="level" data-i18n="lvlAdvanced">Avanzado</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">GraphQL</span><span class="level" data-i18n="lvlIntermediate">Intermedio</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">Redis</span><span class="level" data-i18n="lvlIntermediate">Intermedio</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">AWS</span><span class="level" data-i18n="lvlIntermediate">Intermedio</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="tech">Python</span><span class="level" data-i18n="lvlBasic">Básico</span>
-          <div class="dot-row">
-            <div class="dot on"></div>
-            <div class="dot on"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="section-header">
-        <h2 data-i18n="navProjects">Proyectos</h2>
-        <span class="section-count" data-i18n="projectsCount">Selección — 2024</span>
-      </div>
-      <div class="projects">
-        <div class="project">
-          <div>
-            <p class="project-num">01</p>
-            <p class="project-name">Fast CV</p>
-            <p class="project-desc" data-i18n="proj1Desc">
-              Constructor de currículums que genera un CV en minutos, en formato
-              ATS o con plantillas de diseño, y lo exporta a PDF o DOCX. Gratis y
-              sin fricción.
-            </p>
-            <div class="project-tags">
-              <span class="tag">React</span><span class="tag">PDF</span
-              ><span class="tag">DOCX</span><span class="tag">ATS</span>
-            </div>
-          </div>
-          <a class="project-link" href="https://fast-cv.netlify.app/" target="_blank" rel="noopener" data-i18n="projView">Ver →</a>
-        </div>
-        <div class="project">
-          <div>
-            <p class="project-num">02</p>
-            <p class="project-name">Focus Poker</p>
-            <p class="project-desc" data-i18n="proj2Desc">
-              Planning poker en tiempo real para ceremonias de estimación ágil.
-              Nació de una necesidad del propio equipo para estimar historias de
-              forma colaborativa y sin distracciones.
-            </p>
-            <div class="project-tags">
-              <span class="tag">React</span><span class="tag">WebSockets</span
-              ><span class="tag">Realtime</span><span class="tag">Scrum</span>
-            </div>
-          </div>
-          <a class="project-link" href="https://focuspoker.netlify.app/" target="_blank" rel="noopener" data-i18n="projView">Ver →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="section-header"><h2 data-i18n="navAbout">Sobre mí</h2></div>
-      <div class="about-grid">
-        <div class="about-text">
-          <p data-i18n-html="aboutP1">
-            Soy desarrollador fullstack en <strong>Santiago, Chile</strong>, con
-            más de cinco años llevando productos de la idea a producción. Empecé
-            en el desarrollo de interfaces, así que leo los diseños de una forma
-            particular: los estructuro mentalmente antes de traducirlos a código
-            limpio y mantenible.
-          </p>
-          <p data-i18n-html="aboutP2">
-            Construyo cosas robustas
-            <strong>que otras personas realmente quieran usar</strong>: rápidas,
-            claras y fáciles de entender. No solo escribo código; cuido cada
-            detalle y cada flujo, y pruebo el producto pensando como el cliente
-            que lo va a usar.
-          </p>
-          <p data-i18n="aboutP3">
-            Fuera del código: muchos viajes, mucho deporte y fanático del buen
-            café.
-          </p>
-        </div>
-        <div class="about-side">
-          <h3 class="about-subtitle" data-i18n="aboutExpTitle">Experiencia</h3>
-          <ul class="timeline">
-            <li>
-              <span class="tl-year" data-i18n="exp1Date">2023 — Hoy</span>
-              <div>
-                <div class="tl-place">OTIC · Cámara Chilena de la Construcción</div>
-                <div class="tl-role" data-i18n="exp1Role">Desarrollador Full Stack</div>
-              </div>
-            </li>
-            <li>
-              <span class="tl-year">2022 — 2023</span>
-              <div>
-                <div class="tl-place">PROYECTE</div>
-                <div class="tl-role" data-i18n="exp2Role">Desarrollador Frontend</div>
-              </div>
-            </li>
-            <li>
-              <span class="tl-year">2022 — 2023</span>
-              <div>
-                <div class="tl-place">XBrein</div>
-                <div class="tl-role" data-i18n="exp3Role">Desarrollador Freelance</div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="about-extra">
-        <div class="about-block">
-          <h3 class="about-subtitle" data-i18n="aboutEduTitle">Educación</h3>
-          <ul class="mini-list">
-            <li>
-              <div class="mini-title">Universidad Tecnológica de Chile · INACAP</div>
-              <div class="mini-sub" data-i18n="edu1Field">
-                Ingeniería en Maquinaria, Vehículos y Sistemas Electrónicos
-              </div>
-              <div class="mini-date">2017 — 2020</div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="about-block">
-          <h3 class="about-subtitle" data-i18n="aboutCertTitle">Certificaciones</h3>
-          <ul class="mini-list">
-            <li>
-              <div class="mini-title">Version Control</div>
-              <div class="mini-sub">Meta · 2026</div>
-            </li>
-            <li>
-              <div class="mini-title">Programming with JavaScript</div>
-              <div class="mini-sub">Meta · 2026</div>
-            </li>
-            <li>
-              <div class="mini-title">Introduction to Front-End Development</div>
-              <div class="mini-sub">Coursera · 2025</div>
-            </li>
-            <li>
-              <div class="mini-title">Web Fundamentals HTML, CSS, JS</div>
-              <div class="mini-sub">Coding Dojo · 2021</div>
-            </li>
-            <li>
-              <div class="mini-title">Desarrollador Full-Stack Python</div>
-              <div class="mini-sub">Coding Dojo · 2021</div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="contact-inner">
-        <h2 data-i18n-html="contactTitle">Trabajemos<br /><em>juntos.</em></h2>
-        <p data-i18n="contactDesc">
-          Disponible para proyectos freelance, colaboraciones y posiciones
-          remotas. Respondo en menos de 24 horas.
-        </p>
-        <div class="contact-links">
-          <a class="contact-link" href="mailto:zmaikol399@gmail.com"
-            >zmaikol399@gmail.com</a
-          >
-          <a class="contact-link" href="https://github.com/zmykedev" target="_blank" rel="noopener">GitHub</a>
-          <a class="contact-link" href="https://www.linkedin.com/in/maikolzapata" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="contact-link" href="CV_Maikol_Zapata_FullStack.pdf" target="_blank" rel="noopener" data-i18n="contactResume">Curriculum →</a>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <span>© 2024 Maikol Zapata</span>
-      <span>Santiago, Chile</span>
-    </footer>
 
     <script src="script.js"></script>
   </body>
