@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js");
+
 (function () {
   // ── Translations ───────────────────────────────────────
   // Spanish is NOT stored here: it lives in the HTML (single source
@@ -197,4 +199,25 @@
       }
     });
   });
+
+  // ── Firma: se dibuja una vez al llegar a contacto ───────
+  var sig = document.querySelector(".signature");
+  if (sig) {
+    if (!("IntersectionObserver" in window)) {
+      sig.classList.add("is-drawn");
+    } else {
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              sig.classList.add("is-drawn");
+              io.disconnect();
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+      io.observe(sig);
+    }
+  }
 })();
