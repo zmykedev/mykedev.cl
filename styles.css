@@ -295,3 +295,29 @@ h2 { margin: 0; font-size: clamp(34px, 4.5vw, 48px); letter-spacing: -0.03em; fo
   .cube, .status-dot { animation: none; }
   .btn:hover, .browser-body:hover .mock-doc, .shot-img:hover img { transform: none; }
 }
+
+/* ── Firma ──────────────────────────────── */
+.signoff { display: flex; flex-direction: column; gap: 6px; margin-top: 16px; color: var(--on-dark); }
+.signature { width: 260px; height: auto; display: block; overflow: visible; }
+.signature path {
+  stroke: currentColor; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; fill: none;
+}
+.signature .swash { stroke: var(--accent-soft); stroke-width: 3; }
+.signoff-name { font-size: 14px; color: var(--on-dark-3); padding-left: 6px; }
+
+/* Solo se esconde si hay JS para revelarla; sin JS la firma se ve completa */
+.js .signature path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; }
+.js .signature.is-drawn path {
+  animation: signature-draw var(--dur, 0.7s) cubic-bezier(.55,.1,.35,1) var(--delay, 0s) forwards;
+}
+@keyframes signature-draw {
+  0% { opacity: 1; stroke-dashoffset: 1; }
+  100% { opacity: 1; stroke-dashoffset: 0; }
+}
+
+@media (max-width: 640px) {
+  .signature { width: 200px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .signature path, .js .signature.is-drawn path { animation: none; opacity: 1; stroke-dashoffset: 0; stroke-dasharray: none; }
+}
